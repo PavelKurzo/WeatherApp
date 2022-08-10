@@ -58,26 +58,3 @@ class WeatherAPI {
     }
 }
 
-
-
-
-
-
-//func getData(completion: @escaping (Result<[WeatherResponse], Error>) -> Void) {
-//    let stringUrl = "https://api.openweathermap.org/data/2.5/weather?q=Warsaw&appid=0058adaff3893eb760cbbf2c877c6e7d&units=metric"
-//    guard let url = URL(string: stringUrl) else { return }
-//    let task = URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in
-//        guard let data = data, error == nil else {
-//            completion(.failure(APIError.noAnyData))
-//            return
-//        }
-//        do {
-//            let result = try JSONDecoder().decode(WeatherResponse.self, from: data)
-//            completion(.success([result]))
-//            print(result)
-//        } catch {
-//            completion(.failure(error))
-//        }
-//    })
-//    task.resume()
-//}

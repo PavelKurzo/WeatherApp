@@ -7,9 +7,6 @@
 
 import Foundation
 
-struct Weather: Codable {
-    var results: [WeatherResponse]
-}
 
 struct WeatherConditions: Codable {
     let description: String

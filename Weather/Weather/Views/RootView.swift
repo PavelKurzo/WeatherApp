@@ -33,7 +33,7 @@ class RootView: UIView {
         textField.placeholder = "  type in your city"
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = .systemBackground
+        textField.backgroundColor = UIColor(white: 0.4, alpha: 0.6)
         textField.layer.cornerRadius = 5
         return textField
     }()
