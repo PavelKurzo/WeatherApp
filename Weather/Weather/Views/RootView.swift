@@ -28,6 +28,25 @@ class RootView: UIView {
         return tv
     }()
     
+    let searchTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "  type in your city"
+        textField.textAlignment = .center
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.backgroundColor = UIColor(white: 0.5, alpha: 0.6)
+        textField.layer.cornerRadius = 5
+        return textField
+    }()
+    
+    let searchButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Search", for: .normal)
+        button.backgroundColor = UIColor(white: 0.5, alpha: 0.6)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 5
+        return button
+    }()
+    
     init() {
         super.init(frame: .zero)
         setup()
@@ -42,6 +61,8 @@ class RootView: UIView {
         backgroundColor = .systemBackground
         addSubview(mainLabel)
         addSubview(tableView)
+        addSubview(searchTextField)
+        addSubview(searchButton)
         setConstraints()
     }
 
@@ -50,7 +71,17 @@ class RootView: UIView {
             mainLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 70),
             mainLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 30),
             
-            tableView.topAnchor.constraint(equalTo: mainLabel.topAnchor, constant: 100),
+            searchTextField.topAnchor.constraint(equalTo: mainLabel.topAnchor, constant: 70),
+            searchTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 30),
+            searchTextField.widthAnchor.constraint(equalToConstant: 180),
+            searchTextField.heightAnchor.constraint(equalToConstant: 40),
+            
+            searchButton.topAnchor.constraint(equalTo: mainLabel.topAnchor, constant: 70),
+            searchButton.leftAnchor.constraint(equalTo: searchTextField.rightAnchor, constant: 20),
+            searchButton.widthAnchor.constraint(equalToConstant: 90),
+            searchButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            tableView.topAnchor.constraint(equalTo: searchTextField.topAnchor, constant: 80),
             tableView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
             tableView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
