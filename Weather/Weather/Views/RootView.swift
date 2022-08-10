@@ -20,6 +20,14 @@ class RootView: UIView {
         return label
     }()
     
+    let tableView: UITableView = {
+        let tv = UITableView(frame: .zero)
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        tv.backgroundColor = UIColor(white: 1, alpha: 0.2)
+        tv.register(WeatherCell.self, forCellReuseIdentifier: WeatherCell.identifier)
+        return tv
+    }()
+    
     init() {
         super.init(frame: .zero)
         setup()
@@ -33,6 +41,7 @@ class RootView: UIView {
     func setup() {
         backgroundColor = .systemBackground
         addSubview(mainLabel)
+        addSubview(tableView)
         setConstraints()
     }
 
@@ -40,6 +49,11 @@ class RootView: UIView {
         let constraints = [
             mainLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 70),
             mainLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 30),
+            
+            tableView.topAnchor.constraint(equalTo: mainLabel.topAnchor, constant: 100),
+            tableView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
+            tableView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
 
         ]
         NSLayoutConstraint.activate(constraints)
