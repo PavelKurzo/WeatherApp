@@ -13,11 +13,13 @@ class RootViewController: UIViewController {
         return self.view as! RootView
     }
     
+    var animals: [String] = ["Horse", "Cow", "Camel", "Pig", "Sheep", "Goat"]
+    
     override func loadView() {
         super.loadView()
         self.view = RootView()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -31,11 +33,25 @@ class RootViewController: UIViewController {
 
 extension RootViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return animals.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("touched")
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            animals.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        } else if editingStyle == .insert {
+            print("inserting")
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,12 +60,10 @@ extension RootViewController: UITableViewDataSource {
         cell.layer.cornerRadius = 5
         return cell
     }
-
 }
+
 
 extension RootViewController: UITableViewDelegate {
     
 }
-
-
 
