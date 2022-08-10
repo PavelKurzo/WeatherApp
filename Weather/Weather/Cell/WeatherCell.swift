@@ -17,8 +17,25 @@ class WeatherCell: UITableViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.text = "test"
         label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    var descriptionCityLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    var tempCityLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = UIFont.boldSystemFont(ofSize: 25)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -26,14 +43,22 @@ class WeatherCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: WeatherCell.identifier)
         addSubview(cityNameLabel)
+        addSubview(descriptionCityLabel)
+        addSubview(tempCityLabel)
         setConstraints()
     }
 
     func setConstraints() {
         let constraints = [
 
-            cityNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 15),
-            cityNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 100),
+            cityNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            cityNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
+            
+            descriptionCityLabel.topAnchor.constraint(equalTo: cityNameLabel.bottomAnchor, constant: 20),
+            descriptionCityLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
+            
+            tempCityLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            tempCityLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -30),
         ]
         NSLayoutConstraint.activate(constraints)
     }

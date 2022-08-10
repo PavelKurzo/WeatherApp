@@ -33,7 +33,7 @@ class RootView: UIView {
         textField.placeholder = "  type in your city"
         textField.textAlignment = .center
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.backgroundColor = UIColor(white: 0.5, alpha: 0.6)
+        textField.backgroundColor = .systemBackground
         textField.layer.cornerRadius = 5
         return textField
     }()
@@ -41,9 +41,11 @@ class RootView: UIView {
     let searchButton: UIButton = {
         let button = UIButton()
         button.setTitle("Search", for: .normal)
-        button.backgroundColor = UIColor(white: 0.5, alpha: 0.6)
+        button.setTitleColor(UIColor(white: 0.4, alpha: 0.6), for: .normal)
+        button.backgroundColor = .lightGray
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(RootViewController().searchButtonPressed), for: .touchUpInside)
         return button
     }()
     
