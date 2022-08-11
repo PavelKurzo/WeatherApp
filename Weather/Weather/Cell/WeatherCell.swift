@@ -11,9 +11,8 @@ import UIKit
 class WeatherCell: UITableViewCell {
     
     static let identifier = "WeatherCell"
-    var selectedButton: Bool = true
     
-    var cityNameLabel: UILabel = {
+    let cityNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -22,7 +21,7 @@ class WeatherCell: UITableViewCell {
         return label
     }()
     
-    var descriptionCityLabel: UILabel = {
+    let descriptionCityLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -31,7 +30,7 @@ class WeatherCell: UITableViewCell {
         return label
     }()
     
-    var tempCityLabel: UILabel = {
+    let tempCityLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -39,7 +38,7 @@ class WeatherCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: WeatherCell.identifier)
         addSubview(cityNameLabel)
@@ -47,10 +46,15 @@ class WeatherCell: UITableViewCell {
         addSubview(tempCityLabel)
         setConstraints()
     }
+    
+    func set(weather: WeatherResponse) {
+        cityNameLabel.text = weather.name
+        descriptionCityLabel.text = weather.weather[0].description
+        tempCityLabel.text = String(format: "%.1f C", weather.main.temp)
+    }
 
     func setConstraints() {
         let constraints = [
-
             cityNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
             cityNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
             
