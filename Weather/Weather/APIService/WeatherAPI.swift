@@ -11,7 +11,6 @@ enum WeatherAPIError: Error {
     case genericError
 }
 
-
 class WeatherAPI {
     
     private let baseUrl = "api.openweathermap.org/data/2.5/"
@@ -47,7 +46,6 @@ class WeatherAPI {
     }
     
     private func makeUrl(_ method: String, parameter: [URLQueryItem]) -> URL? {
-        
         var component = URLComponents()
         component.scheme = "https"
         component.path = baseUrl + method
@@ -56,7 +54,6 @@ class WeatherAPI {
             URLQueryItem(name: "appid", value: appid)
         ]
         queryItems.append(contentsOf: parameter)
-        
         component.queryItems = queryItems
         return component.url
     }

@@ -45,7 +45,7 @@ class RootView: UIView {
         button.backgroundColor = .lightGray
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 5
-        
+        button.addTarget(self, action: #selector(RootViewController().searchButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -66,7 +66,6 @@ class RootView: UIView {
         addSubview(searchTextField)
         addSubview(searchButton)
         setConstraints()
-        searchButton.addTarget(self, action: #selector(RootViewController().searchButtonPressed), for: .touchUpInside)
     }
 
     func setConstraints() {
