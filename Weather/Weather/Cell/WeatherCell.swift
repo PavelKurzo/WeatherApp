@@ -50,7 +50,7 @@ class WeatherCell: UITableViewCell {
     func set(weather: WeatherResponse) {
         cityNameLabel.text = weather.name
         descriptionCityLabel.text = weather.weather[0].description
-        tempCityLabel.text = String(format: "%.1f C", weather.main.temp)
+        tempCityLabel.text = String(format: "%.0f °C", weather.main.temp)
     }
 
     func setConstraints() {
